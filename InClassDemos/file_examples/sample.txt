@@ -1,0 +1,4 @@
+Course COde, COurse Name, Instructor
+CS101, Intro to Comp.Sci, Samual
+CS200, OOP, Lindsey
+CS300, Abstract Architecture, Gerald

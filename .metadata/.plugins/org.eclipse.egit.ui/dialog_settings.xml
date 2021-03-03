@@ -4,4 +4,7 @@
 	<item key="GitSelectRepositoryPage.lastRepository" value="C:\Users\User\Documents\TekSystems\Java\JavaAlgs\.git"/>
 	<section name="GitImportWizard">
 	</section>
+	<section name="GitCommitSearchPage">
+		<item key="HISTORY_SIZE" value="0"/>
+	</section>
 </section>
