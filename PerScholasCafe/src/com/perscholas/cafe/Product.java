@@ -1,25 +1,24 @@
 package com.perscholas.cafe;
 
-public class Product {
-	private String name, description;
-	private double price, quantity;
+abstract public class Product {
+	protected String name, description;
+	protected double price;
+	protected int quantity;
+	static double tax = .025;
 
-	public Product(String name, double price, String description, double quantity) {
+	public Product() {
+		super();  // Object constructor.
+		}
+	
+	public Product(String name, double price, String description) {
 		super();
 		this.name = name;
 		this.price = price;
 		this.description = description;
-		this.quantity = quantity;
+		this.quantity = 0;  // anticipating what they want
 	}
 
-
-	public Product() {
-		super();
-		}
-
-	public calculateProductTotal() {
-		return price * quantity;
-	}
+	abstract public double calculateProductTotal();
 	
 
 	public String getName() {
@@ -37,7 +36,7 @@ public class Product {
 	}
 
 
-	public void setPrice(String price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 
@@ -52,12 +51,12 @@ public class Product {
 	}
 
 
-	public String getQuantity() {
+	public int getQuantity() {
 		return quantity;
 	}
 
 
-	public void setQuantity(String quantity) {
+	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
 
