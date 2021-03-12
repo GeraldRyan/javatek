@@ -49,6 +49,11 @@ public class EmployeeApp {
 
 		return null;
 	}
+	public void getEmp(String s) {
+		System.out.println(s);
+		Employee e = emps.stream().filter(ee -> ee.getName().matches(s)).findFirst().orElse(null);
+		System.out.printf("%-10d | %-15s | %-20s | %-15.2f\n", e.getId(), e.getName(), e.getTitle(), e.getSalary());
+	}
 
 	public void updateEmp(Employee emp) {
 		// check if ee exists in db
@@ -68,4 +73,6 @@ public class EmployeeApp {
 		}
 
 	}
+
+
 }

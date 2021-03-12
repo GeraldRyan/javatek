@@ -60,11 +60,25 @@ public class Runnable {
 //				}
 				break;
 			case 2:
-				System.out.println("Enter the id of the employee to access");
-				int eid = reader.nextInt();
+				System.out.println("Enter the name or id of the employee to access");
+				String s = reader.next();
 				reader.nextLine();
+				try {
+					Integer.parseInt(s);
+					appInstance.getEmp(Integer.parseInt(s));
+				}
+				catch (NumberFormatException nfe){
+					appInstance.getEmp(s);
+				}
 				// TODO Implement
-				appInstance.getEmp(eid);
+//				if (s.matches("\\d+")) {
+//					appInstance.getEmp(Integer.parseInt(s));					
+//				}
+//				else {
+//					System.out.println("Else here");
+//					appInstance.getEmp(s);
+//				}
+
 				break;
 			case 3:
 				System.out.println("Enter the name or id of the employee to update");
