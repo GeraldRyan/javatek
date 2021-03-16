@@ -1,0 +1,13 @@
+Given an ArrayList of distinct integers lst, and target_sum t,
+create a method that returns the ArrayList of indexes for 
+the pairs of integers in the ArrayList whose sum is equal to t.
+Expected time complexity: O(n)
+Expected space complexity: O(n)
+
+example:
+input: [5, 8, 3, 9, 0], 8
+output: [0, 2, 1, 4]
+
+input: [1, 8, 33, 6], 7
+output: [0, 3]
+
