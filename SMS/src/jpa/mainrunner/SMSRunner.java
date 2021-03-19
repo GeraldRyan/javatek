@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 import jpa.entitymodels.Student;
+import jpa.service.CourseService;
 import jpa.service.StudentService;
 
 public class SMSRunner {
@@ -12,6 +13,7 @@ public class SMSRunner {
 
 	public static void main(String[] args) throws SQLException {
 		StudentService studentApp = new StudentService();
+		CourseService courseApp = new CourseService();
 //		ItemApp.connect();
 		Student student;
 		int id;
@@ -23,61 +25,34 @@ public class SMSRunner {
 		 */
 
 		int choice = 0;
-		while (choice != 8) {
+		while (choice != 2) {
 			menu();
 			choice = sc.nextInt();
 			sc.nextLine();
 			switch (choice) {
 			case 1:
-				System.out.println("\nEnter the Item ID, name and price");
-				Item new_Item = new Item(Integer.parseInt(sc.nextLine()), sc.nextLine(),
-						Double.parseDouble(sc.nextLine()));
-				ItemApp.addItemService(new_Item);
+				System.out.println("\nEnter your email and password :: ");
+				boolean bValid = studentApp.validateStudent(sc.nextLine(), sc.nextLine());
+				if (bValid) {
+					System.out.println("You're in");
+					int chois = 0;
+					while (chois!=2) {
+						menu2();
+						chois = sc.nextInt();
+						sc.nextLine();
+						switch(chois) {
+						case 1: 
+							// Display all courses in Database
+							System.out.println("\nEnter what course you want TO IMPLEMENT");
+							break;
+						case 2:
+							System.out.println("Logging out");
+							break;
+						}
+					}
+				}
 				break;
-//			case 2:
-//				System.out.println("Enter the Department ID");
-//				id = Integer.parseInt(sc.nextLine());
-//				d = app.getDepartment(id);
-//				if (d != null) {
-//					header();
-//					System.out.println(d);
-//				}
-//				break;
-//			case 3:
-//				System.out.println("\nEnter the Department ID, Name and state to be updated");
-//				d = new Department(Integer.parseInt(sc.nextLine()), sc.nextLine(), sc.nextLine()); 
-//				app.updateDepartmentService(d);
-//				break;
-//			case 4:
-//				System.out.println("Enter the Department ID to be removed");
-//				id = Integer.parseInt(sc.nextLine());
-//				app.removeDepartmentService(id);
-//				break;
-//			case 5:
-//				header();
-//				app.getAllDeptsService().forEach(System.out::println);
-//				break;
-//			case 6:
-//				System.out.println("\nEnter the Employee ID, Name, and Title to be validated");
-//				boolean valid = app.validateEmpService(Integer.parseInt(sc.nextLine()),
-//						sc.nextLine(), sc.nextLine());
-//				if (valid) {
-//					System.out.println("The employee is validated");
-//				} else {
-//					System.out.println("Invalid employee");
-//				}
-//				break;
-//			case 7:
-//				System.out.println("\nEnter employee id of employee to update");
-//				int eid = sc.nextInt();
-//				System.out.println("\nEnter New Salary");
-//				double salary = sc.nextDouble();
-////				e = app.getEmpService(id);
-////				e.setSalary(salary);
-//				app.updateEmployeeSalaryService(eid, salary);
-//				System.out.println("\nSalary updated");						
-//				break;
-			case 8:
+			case 2:
 //				ItemApp.close();
 				System.out.println("\nClosing the app...");
 				break;
@@ -89,19 +64,28 @@ public class SMSRunner {
 	public static void menu() {
 		System.out.println("\n**Item DataBase App**");
 		System.out.println("1. Log In");
-//		System.out.println("2. Access a Department");
+		System.out.println("2. Quit");
 //		System.out.println("3. Update an Department");
 //		System.out.println("4. Remove a Department");
 //		System.out.println("5. Display all Departments");
 //		System.out.println("6. Validate an employeee");
 //		System.out.println("7. Update EE Salary");
-		System.out.println("8. Quit");
+//		System.out.println("8. Quit");
 	}
+	public static void menu2() {
+		System.out.println("\n**Item DataBase App**");
+		System.out.println("1. Register for class");
+		System.out.println("2. Log Out");
+	}
+
 
 	public static void header() {
 		System.out.format("\n%5s %20s %20s\n", "ID", "Class Name", "Instructor Name");
 		System.out.println("-".repeat(51));
 	}
-
+	
+	public static void registration() {
+		
+	}
 
 }

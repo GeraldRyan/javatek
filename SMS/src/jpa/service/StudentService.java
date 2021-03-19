@@ -28,7 +28,7 @@ public class StudentService implements StudentDAO {
 	@Override
 	public boolean validateStudent(String email, String sPassword) {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
