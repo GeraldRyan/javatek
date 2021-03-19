@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
 
+import jpa.entitymodels.Course;
 import jpa.entitymodels.Student;
 import jpa.service.CourseService;
 import jpa.service.StudentService;
@@ -63,6 +64,15 @@ public class SMSRunner {
 				break;
 			case 100:
 				studentApp.populateDB();
+				break;
+			case 199:
+				System.out.println("Displaying all Courses");
+				studentHeader();
+				List<Course> curs = courseApp.getAllCourses();
+				curs.forEach(System.out::println);
+				break;
+			case 200:
+				courseApp.populateDB();
 				break;
 			case 2:
 //				ItemApp.close();

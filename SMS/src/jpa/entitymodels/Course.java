@@ -9,10 +9,11 @@ import javax.persistence.Table;
 @Table (name="Course")
 public class Course {
 	@Id
+	@Column(name="id")
 	int cId;
-	@Column(name="cName", length=50, nullable=false)
+	@Column(name="name", length=50, nullable=false)
 	String cName;
-	@Column(name="cInstructorName", length=50, nullable=false)
+	@Column(name="Instructor", length=50, nullable=false)
 	String cInstructorName;
 	
 
