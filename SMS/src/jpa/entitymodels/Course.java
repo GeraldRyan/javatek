@@ -1,5 +1,6 @@
 package jpa.entitymodels;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -9,7 +10,9 @@ import javax.persistence.Table;
 public class Course {
 	@Id
 	int cId;
+	@Column(name="cName", length=50, nullable=false)
 	String cName;
+	@Column(name="cInstructorName", length=50, nullable=false)
 	String cInstructorName;
 	
 

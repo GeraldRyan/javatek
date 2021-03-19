@@ -14,7 +14,7 @@ public interface StudentDAO {
 	public boolean validateStudent(String email, String sPassword);
 	
 	public void registerStudentToCourse(String sEmail, int cId);
-	
+		
 	public Course getStudentCourse(String sEmail);
 
 }

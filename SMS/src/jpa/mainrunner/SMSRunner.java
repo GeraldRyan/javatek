@@ -1,6 +1,7 @@
 package jpa.mainrunner;
 
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Scanner;
 
 import jpa.entitymodels.Student;
@@ -36,12 +37,12 @@ public class SMSRunner {
 				if (bValid) {
 					System.out.println("You're in");
 					int chois = 0;
-					while (chois!=2) {
+					while (chois != 2) {
 						menu2();
 						chois = sc.nextInt();
 						sc.nextLine();
-						switch(chois) {
-						case 1: 
+						switch (chois) {
+						case 1:
 							// Display all courses in Database
 							System.out.println("\nEnter what course you want TO IMPLEMENT");
 							break;
@@ -50,7 +51,15 @@ public class SMSRunner {
 							break;
 						}
 					}
+				} else {
+					System.out.println("Invalid password, try again");
 				}
+				break;
+			case 99:
+				System.out.println("Displaying all students");
+				studentHeader();
+				List<Student> studs = studentApp.getAllStudents();
+				studs.forEach(System.out::println);
 				break;
 			case 2:
 //				ItemApp.close();
@@ -72,20 +81,25 @@ public class SMSRunner {
 //		System.out.println("7. Update EE Salary");
 //		System.out.println("8. Quit");
 	}
+
 	public static void menu2() {
 		System.out.println("\n**Item DataBase App**");
 		System.out.println("1. Register for class");
 		System.out.println("2. Log Out");
 	}
 
-
-	public static void header() {
+	public static void classHeader() {
 		System.out.format("\n%5s %20s %20s\n", "ID", "Class Name", "Instructor Name");
 		System.out.println("-".repeat(51));
 	}
-	
+	public static void studentHeader() {
+		System.out.format("\n%5s %20s %20s %20s\n", "email", "Name", "courses", "password");
+		System.out.println("-".repeat(81));
+	}
+
+
 	public static void registration() {
-		
+
 	}
 
 }

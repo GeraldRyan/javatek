@@ -11,14 +11,15 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "student")
 public class Student {
+
 	@Id
-	@Column(name="email")
-	String email;
+	@Column(name="sEmail", length=50, nullable=false)
+	String sEmail;
 	@Basic
-	@Column(name="sName")
+	@Column(name="sName", length=50, nullable=false)
 	String sName;
 	@Basic
-	@Column(name="sPass")
+	@Column(name="sPass", length=50, nullable=false)
 	String sPass;
 	@Basic
 	@Column(name="sCourses")
@@ -30,18 +31,18 @@ public class Student {
 
 	public Student(String email, String sName, String sPass, List<String> sCourses) {
 		super();
-		this.email = email;
+		this.sEmail = email;
 		this.sName = sName;
 		this.sPass = sPass;
 		this.sCourses = sCourses;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getSEmail() {
+		return sEmail;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setSEmail(String email) {
+		this.sEmail = email;
 	}
 
 	public String getsName() {
@@ -66,6 +67,11 @@ public class Student {
 
 	public void setsCourses(List<String> sCourses) {
 		this.sCourses = sCourses;
+	}
+
+	@Override
+	public String toString() {
+		return String.format("\n%5s %20s %20s %20s\n", sEmail, sName, "multiple", "*******");
 	}
 
 }
