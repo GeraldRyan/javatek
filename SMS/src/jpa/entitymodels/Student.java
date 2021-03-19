@@ -1,5 +1,6 @@
 package jpa.entitymodels;
 
+
 import java.util.List;
 
 import javax.persistence.Basic;
@@ -7,22 +8,24 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "student")
 public class Student {
 
 	@Id
-	@Column(name="sEmail", length=50, nullable=false)
+	@Column(name="email", length=50, nullable=false)
 	String sEmail;
 	@Basic
-	@Column(name="sName", length=50, nullable=false)
+	@Column(name="name", length=50, nullable=false)
 	String sName;
 	@Basic
-	@Column(name="sPass", length=50, nullable=false)
+	@Column(name="password", length=50, nullable=false)
 	String sPass;
-	@Basic
-	@Column(name="sCourses")
+//	@Basic
+//	@Column(name="sCourses")
+	@Transient
 	List<String> sCourses;
 
 	public Student() {
@@ -35,6 +38,13 @@ public class Student {
 		this.sName = sName;
 		this.sPass = sPass;
 		this.sCourses = sCourses;
+	}
+
+
+	public Student(String email, String name, String password) {
+		this.sEmail = email;
+		this.sName = name;
+		this.sPass = password;
 	}
 
 	public String getSEmail() {

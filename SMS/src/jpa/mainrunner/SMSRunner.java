@@ -61,6 +61,9 @@ public class SMSRunner {
 				List<Student> studs = studentApp.getAllStudents();
 				studs.forEach(System.out::println);
 				break;
+			case 100:
+				studentApp.populateDB();
+				break;
 			case 2:
 //				ItemApp.close();
 				System.out.println("\nClosing the app...");
@@ -96,6 +99,7 @@ public class SMSRunner {
 		System.out.format("\n%5s %20s %20s %20s\n", "email", "Name", "courses", "password");
 		System.out.println("-".repeat(81));
 	}
+	
 
 
 	public static void registration() {

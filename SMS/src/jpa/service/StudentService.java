@@ -57,9 +57,18 @@ public class StudentService extends DBConnection implements StudentDAO {
 		return null;
 	}
 
+	public void addStudent(String email, String name, String password) {
+		Student s = new Student(email, name, password);
+		this.connect();
+		em.getTransaction().begin();
+		em.persist(s);
+		em.getTransaction().commit();
+		this.disconnect();
+	}
+
 	public boolean populateDB() {
 		try {
-
+			this.addStudent("hluckham0@google.ru", "Hazel Luckham", "X1uZcoIh0dj");
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
