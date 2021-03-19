@@ -2,6 +2,8 @@ package jpa.entitymodels;
 
 import java.util.List;
 
+import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -10,13 +12,28 @@ import javax.persistence.Table;
 @Table(name = "student")
 public class Student {
 	@Id
+	@Column(name="email")
 	String email;
+	@Basic
+	@Column(name="sName")
 	String sName;
+	@Basic
+	@Column(name="sPass")
 	String sPass;
+	@Basic
+	@Column(name="sCourses")
 	List<String> sCourses;
 
 	public Student() {
 		// TODO Auto-generated constructor stub
+	}
+
+	public Student(String email, String sName, String sPass, List<String> sCourses) {
+		super();
+		this.email = email;
+		this.sName = sName;
+		this.sPass = sPass;
+		this.sCourses = sCourses;
 	}
 
 	public String getEmail() {

@@ -13,6 +13,14 @@ public class Course {
 	String cInstructorName;
 	
 
+	public Course(int cId, String cName, String cInstructorName) {
+		super();
+		this.cId = cId;
+		this.cName = cName;
+		this.cInstructorName = cInstructorName;
+	}
+
+
 	public Course() {
 		// TODO Auto-generated constructor stub
 	}
@@ -45,6 +53,12 @@ public class Course {
 
 	public void setcInstructorName(String cInstructorName) {
 		this.cInstructorName = cInstructorName;
+	}
+
+
+	@Override
+	public String toString() {
+		return String.format("\n%5s %20s %20s\n", cId, cName, cInstructorName);
 	}
 
 }
