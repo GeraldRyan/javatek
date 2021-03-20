@@ -34,9 +34,13 @@ public class SMSRunner {
 			switch (choice) {
 			case 1:
 				System.out.println("\nEnter your email and password :: ");
-				boolean bValid = studentApp.validateStudent(sc.nextLine(), sc.nextLine());
+				String email = sc.nextLine();
+				boolean bValid = studentApp.validateStudent(email, sc.nextLine());
 				if (bValid) {
 					System.out.println("You're in");
+					List<Course> studentcourses = studentApp.getStudentCourses(email);
+					System.out.println("Your courses");
+					printEach(studentcourses);
 					int chois = 0;
 					while (chois != 2) {
 						menu2();
@@ -45,7 +49,13 @@ public class SMSRunner {
 						switch (chois) {
 						case 1:
 							// Display all courses in Database
-							System.out.println("\nEnter what course you want TO IMPLEMENT");
+							courseHeader();
+
+							courseApp.getAllCourses().forEach(System.out::println);
+							System.out.println("Courses you're currently enrolled in:");
+							studentcourses.forEach(System.out::println);
+							System.out.println("\nWhat course do you want to enroll in? (Enter id).");
+							studentApp.registerStudentToCourse(email, sc.nextInt());
 							break;
 						case 2:
 							System.out.println("Logging out");
@@ -101,7 +111,7 @@ public class SMSRunner {
 		System.out.println("2. Log Out");
 	}
 
-	public static void classHeader() {
+	public static void courseHeader() {
 		System.out.format("\n%5s %20s %20s\n", "ID", "Class Name", "Instructor Name");
 		System.out.println("-".repeat(51));
 	}
@@ -110,8 +120,12 @@ public class SMSRunner {
 		System.out.println("-".repeat(81));
 	}
 	
-
-
+	public static <T> void printEach(List<T> items) {
+		for (T i: items) {
+			System.out.println(i);
+		}
+	}
+	
 	public static void registration() {
 
 	}

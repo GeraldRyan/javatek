@@ -7,7 +7,6 @@ INDEX VERSION 1.131+C:\Users\User\Documents\TekSystems\Java\.metadata\.plugins\o
 1238543558.index
 1621418007.index
 1503818070.index
-1140661257.index
 719456564.index
 2043727593.index
 2053952925.index
@@ -22,4 +21,3 @@ INDEX VERSION 1.131+C:\Users\User\Documents\TekSystems\Java\.metadata\.plugins\o
 1088540399.index
 1407713860.index
 2336103771.index
-337203849.index

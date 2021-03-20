@@ -15,6 +15,6 @@ public interface StudentDAO {
 	
 	public void registerStudentToCourse(String sEmail, int cId);
 		
-	public Course getStudentCourse(String sEmail);
+	public List<Course> getStudentCourses(String sEmail);
 
 }

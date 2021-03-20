@@ -3,6 +3,8 @@ package jpa.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Query;
+
 import jpa.dao.StudentDAO;
 import jpa.dbConnection.DBConnection;
 import jpa.entitymodels.Course;
@@ -47,15 +49,33 @@ public class StudentService extends DBConnection implements StudentDAO {
 
 	@Override
 	public void registerStudentToCourse(String sEmail, int cId) {
-		// TODO Auto-generated method stub
-
+		this.connect();
+		Student s = em.find(Student.class, sEmail);
+		em.getTransaction().begin();
+		Course c = em.find(Course.class, cId);
+		System.out.println("course you want to add");
+		System.out.println(c);
+		List<Course> studentcourses = s.getsCourses();
+//		if c in student --> return
+		if (studentcourses.contains(c)){
+			System.out.println("You're already enrolled in this course, but we appreciate your enthusiasm");
+			return;
+		}
+		studentcourses.add(c);
+		System.out.println(studentcourses.size());
+		s.setsCourses(studentcourses);
+//		em.persist(studentcourses);
+		em.getTransaction().commit();
+		this.disconnect();
 	}
-
 	@Override
-	public Course getStudentCourse(String sEmail) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Course> getStudentCourses(String sEmail) {
+//		 em.createQuery("select c from Course c where c.cId = :givenID").getResultList();
+		Student s = this.getStudentByEmail(sEmail);
+		List<Course> courses = s.getsCourses();
+		return courses;
 	}
+
 
 	public void addStudent(String email, String name, String password) {
 		Student s = new Student(email, name, password);
